@@ -1,0 +1,23 @@
+{
+  "name": "@igords/yandex-skill-utils",
+  "version": "1.0.0",
+  "description": "Set of utils to work with yandex skills",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/igords/yandex-skill-utils.git"
+  },
+  "keywords": [
+    "Yandex",
+    "skill"
+  ],
+  "author": "Igor Sherbakov <igor@sherbakov.me>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/igords/yandex-skill-utils/issues"
+  },
+  "homepage": "https://github.com/igords/yandex-skill-utils#readme"
+}
