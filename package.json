@@ -1,6 +1,6 @@
 {
   "name": "@igords/yandex-skill-utils",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Set of utils to work with yandex skills",
   "main": "index.js",
   "scripts": {
