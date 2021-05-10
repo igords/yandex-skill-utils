@@ -3,27 +3,23 @@ const {variativeText} = require("../lib/utils");
 
 
 function TextResponse(params, session = {}) {
-
-    const {texts, step, intent} = params;
-    if (!texts || !step || !intent) {
+    const {texts, stateKeyName, replacement} = params;
+    if (!texts) {
         throw new Error('TextResponse: Invalid params');
     }
-    try {
-        const {text} = variativeText(texts, -1)
-        return new StepResponse({
-            response: {
-                text,
-                end_session: false
-            },
-            session_state: {
-                ...session,
-                step,
-                intent,
-            }
-        });
-    } catch (TypeError) {
-        throw new Error(`Не верный вызов TextResponse (params=${params})`)
+    const lastResponse = stateKeyName ? parseInt(session[stateKeyName]) : -1
+    const {text, current} = variativeText(texts, lastResponse, replacement)
+    const session_state = {...session}
+    if (stateKeyName) {
+        session_state[stateKeyName] = current;
     }
+    return new StepResponse({
+        response: {
+            text,
+            end_session: false
+        },
+        session_state
+    });
 }
 
 module.exports = TextResponse;
