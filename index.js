@@ -1,9 +1,9 @@
 const StepResponse = require("./src/StepResponse");
 const TextResponse = require("./src/TextResponse");
-const YandexRequest = require("./test/YandexRequest.test");
+const YandexRequest = require("./src/YandexRequest");
 const YandexState = require("./src/YandexState");
 
-module.expors = {
+module.exports = {
     StepResponse,
     TextResponse,
     YandexRequest,

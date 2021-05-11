@@ -3,9 +3,7 @@ class StepResponse {
     constructor(obj) {
         if (!obj) throw new Error('Empty response object!');
         if (!obj.session_state || !obj.response) throw new Error('Wrong response format!')
-        this.session_state = obj.session_state;
-        this.response = obj.response;
-        this.user_state_update = obj.userState || {};
+        const state = obj.state;
     }
 
     get userState() {
