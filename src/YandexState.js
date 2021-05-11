@@ -14,17 +14,19 @@ class YandexState {
         this.session[name] = value;
     }
 
-    updateUser(name, value) {
+    updateUserData(name, value) {
+        this.user[name] = value;
         this.userChanges[name] = value;
     }
 
     formResponse(text) {
-        new StepResponse({
+        return new StepResponse({
             response: {
                 text,
                 end_session: false
             },
-            session_state: this.session
+            session_state: this.session,
+            user_state_update: this.userChanges
         });
     }
 
