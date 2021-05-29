@@ -1,8 +1,7 @@
-const StepResponse = require("./StepResponse");
 const {variativeText} = require("../lib/utils");
 
 
-function TextResponse(params, state = {}) {
+function TextResponse(params, state) {
     const {texts, stateKeyName, replacement} = params;
     if (!texts) {
         throw new Error('TextResponse: Invalid params');
