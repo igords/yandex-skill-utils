@@ -42,7 +42,7 @@ class StepResponse {
     stateStep(prevState) {
         return {
             session_state: this.session_state,
-            user_state: {...prevState.user, ...this.user_state_update}
+            user_state: {...prevState.user_state, ...this.user_state_update}
         }
     }
 
