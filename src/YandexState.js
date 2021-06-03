@@ -30,13 +30,6 @@ class YandexState {
         });
     }
 
-    stateAfter(step) {
-        return {
-            session_state: step.session_state,
-            user_state: {...this.user, ...step.user_state_update}
-        }
-    }
-
 }
 
 module.exports = YandexState;
