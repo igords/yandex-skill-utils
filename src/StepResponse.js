@@ -32,6 +32,7 @@ class StepResponse {
     appendUserData(data) {
         this.user_state_update = data;
     }
+
 }
 
 module.exports = StepResponse;
