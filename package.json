@@ -3,7 +3,6 @@
   "version": "1.0.1",
   "description": "Set of utils to work with yandex skills",
   "main": "index.js",
-  "type": "module",
   "scripts": {
     "test": "jest"
   },
