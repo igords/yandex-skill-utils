@@ -1,6 +1,8 @@
 const StepResponse = require("./StepResponse");
+const TextResponse = require("./TextResponse");
 
 //TODO: make session immutable
+const SESSION_ERROR_KEY = 'error'
 
 class YandexState {
 
@@ -28,6 +30,18 @@ class YandexState {
             session_state: this.session,
             user_state_update: this.userChanges
         });
+    }
+
+    setError(error) {
+        this.updateSession(SESSION_ERROR_KEY, error)
+    }
+
+    resetError() {
+        this.updateSession(SESSION_ERROR_KEY, false)
+    }
+
+    textResponse(texts, replacement = {}) {
+        return TextResponse({texts, replacement}, this)
     }
 
 }
