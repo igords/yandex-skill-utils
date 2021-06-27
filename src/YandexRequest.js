@@ -22,12 +22,16 @@ class YandexRequest {
      * @param separator - разделитель, если значения есть
      * @return string
      */
-    intentValue(intentName, stem = false, separator = ' ') {
+    intentValue(intentName, slotName, stem = false, separator = ' ') {
         if (!this.intents[intentName]) {
             throw  new Error(`Intent "${intentName}" not found!`);
         }
         const slots = this.intents[intentName].slots;
-        const data = this.tokens.slice(slots.tokens.start, slots.tokens.end)
+        const slot = slots[slotName];
+        if (!slot) {
+            return "";
+        }
+        const data = this.tokens.slice(slot.tokens.start, slots.tokens.end)
         if (stem) {
             return data.map(e => porterStemmer.stem(e)).join(separator)
         }
