@@ -18,6 +18,7 @@ class YandexRequest {
     /**
      * Вытащить значение намерения.
      * @param intentName - название намерения
+     * @param slotName - имя слота
      * @param stem - стеммировать ли значения
      * @param separator - разделитель, если значения есть
      * @return string
@@ -31,7 +32,7 @@ class YandexRequest {
         if (!slot) {
             return "";
         }
-        const data = this.tokens.slice(slot.tokens.start, slots.tokens.end)
+        const data = this.tokens.slice(slot.tokens.start, slot.tokens.end)
         if (stem) {
             return data.map(e => porterStemmer.stem(e)).join(separator)
         }
