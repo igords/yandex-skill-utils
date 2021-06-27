@@ -1,3 +1,5 @@
+const natural = require('natural');
+const porterStemmer = natural.PorterStemmerRu;
 
 class YandexRequest {
     constructor(request) {
@@ -5,12 +7,31 @@ class YandexRequest {
         this.original = request.original_utterance;
     }
 
-    get intents()  {
+    get intents() {
         return this.nlu.intents || []
     }
 
     get tokens() {
         return this.nlu.tokens || []
+    }
+
+    /**
+     * Вытащить значение намерения.
+     * @param intentName - название намерения
+     * @param stem - стеммировать ли значения
+     * @param separator - разделитель, если значения есть
+     * @return string
+     */
+    intentValue(intentName, stem = false, separator = ' ') {
+        if (!this.intents[intentName]) {
+            throw  new Error(`Intent "${intentName}" not found!`);
+        }
+        const slots = this.intents[intentName].slots;
+        const data = this.tokens.slice(slots.tokens.start, slots.tokens.end)
+        if (stem) {
+            return data.map(e => porterStemmer.stem(e)).join(separator)
+        }
+        return data.join(separator)
     }
 
     get empty() {
